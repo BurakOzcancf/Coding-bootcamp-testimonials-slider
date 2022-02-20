@@ -62,7 +62,7 @@ main {
   place-items: center;
   position: relative;
   min-width: max-content;
-  max-width: 125rem;
+  max-width: 110rem;
 }
 
 .card {
