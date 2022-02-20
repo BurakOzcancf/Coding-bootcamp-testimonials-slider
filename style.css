@@ -1,0 +1,180 @@
+:root {
+  --Dark-Blue: hsl(240, 38%, 20%);
+  --Grayish-Blue: hsl(240, 18%, 77%);
+  --White: hsl(0, 0%, 100%);
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.sr-only {
+  border: 0 !important;
+  clip: rect(1px, 1px, 1px, 1px) !important;
+  -webkit-clip-path: inset(50%) !important;
+  clip-path: inset(50%) !important;
+  height: 1px !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  padding: 0 !important;
+  position: absolute !important;
+  width: 1px !important;
+  white-space: nowrap !important;
+}
+body {
+  display: grid;
+  place-items: center;
+  text-align: center;
+  font-family: Inter;
+  min-height: 100vh;
+  background-image: url(./images/pattern-bg.svg),
+    url(./images/pattern-curve.svg);
+  background-repeat: no-repeat;
+  background-position: top center, bottom center;
+  background-size: 25rem, contain;
+}
+
+body::after {
+  content: "Coded by Burak Özcan";
+  color: var(--White);
+  font-size: 3rem;
+  display: grid;
+  place-items: center;
+  position: absolute;
+  background-color: var(--Dark-Blue);
+  width: 100%;
+  height: 100%;
+  z-index: 4;
+  animation: creator 5s forwards;
+}
+@keyframes creator {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    display: none;
+    z-index: -1;
+  }
+}
+main {
+  display: grid;
+  place-items: center;
+  position: relative;
+  min-width: max-content;
+  max-width: 125rem;
+}
+
+.card {
+  max-width: 21.875rem;
+  transition: 2s;
+}
+.card-john {
+  position: absolute;
+  opacity: 0;
+  transform: translateX(-100%);
+}
+.card__image {
+  display: block;
+  margin: auto;
+  width: 80%;
+  border-radius: 0.5rem;
+  box-shadow: 0.5rem 0.5rem 1rem var(--Dark-Blue);
+}
+.card__content::before {
+  content: url(./images/pattern-quotes.svg);
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.card__description {
+  margin-top: 6rem;
+  font-size: 1.2rem;
+  font-weight: 300;
+}
+.card__name {
+  margin-top: 1rem;
+  font-weight: 700;
+}
+.card__job {
+  color: var(--Grayish-Blue);
+  font-weight: 500;
+}
+.buttons {
+  display: flex;
+  position: absolute;
+  top: 17rem;
+  left: 50%;
+  transform: translate(-50%, -25%);
+  background-color: var(--White);
+  border-radius: 2rem;
+  animation: button 2s forwards;
+}
+@keyframes button {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+button {
+  cursor: pointer;
+  border: none;
+  padding: 0.5rem 1rem;
+  background-color: transparent;
+}
+.active {
+  transform: translateX(0);
+  opacity: 1;
+}
+.inactive {
+  transform: translateX(-100%);
+  opacity: 0;
+}
+
+@media only screen and (min-width: 90rem) {
+  body {
+    background-size: 45rem, 50rem;
+    background-position: 90% 50%, bottom left;
+  }
+  main {
+    width: 100%;
+  }
+  .card {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    max-width: none;
+  }
+  .card__image {
+    position: absolute;
+    transform: translate(50%, -25%);
+    z-index: -1;
+    width: 35rem;
+  }
+  .card__content {
+    margin-right: 30%;
+    text-align: left;
+  }
+  .card__content::before {
+    left: 20%;
+    transform: translateY(-65%);
+  }
+  .card__description {
+    width: 40.625rem;
+    margin: 0;
+    margin-bottom: 1rem;
+    font-size: 2rem;
+  }
+  .card__name,
+  .card__job {
+    display: inline;
+    margin-right: 1rem;
+    font-size: 1.25rem;
+  }
+  .buttons {
+    top: 25rem;
+    left: 60%;
+  }
+}
